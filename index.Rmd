@@ -1,0 +1,33 @@
+---
+title: "Plotly Assignment Presentation"
+author: "Nguyen Nguyen"
+date: "8/8/2019"
+output: ioslides_presentation
+---
+
+
+## Plot made by Plotly
+
+``` {r, echo = F, warning = F, message = F, results = "hide"}
+library(quantmod)
+library(plotly)
+
+from.dat <- Sys.Date() - 30
+to.dat <- Sys.Date()
+
+getSymbols(c("^GSPC"), src = "yahoo", from = from.dat, to = to.dat)
+gspcClose <- Cl(GSPC)
+SP500 <- data.frame(gspcClose) %>% mutate(Time = time(gspcClose))
+```
+
+``` {r, echo = F}
+plot_ly(data = SP500, x = ~Time, y= ~GSPC.Close, 
+        type = "scatter", mode = "lines") %>%
+        layout(title = "SP500 Index for the last 30 days")
+```
+
+## Slide with Bullets
+
+Thank you for taking time reviewing my work!!!
+
+
